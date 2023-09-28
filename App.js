@@ -1,25 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import Task from './components/List';
+import { StyleSheet, View } from 'react-native';
+import Logo from './components/Logo';
+import Welcome from './components/Welcome';
+import Input from './components/Input';
+import SignUp from './components/SignUp';
 
 export default function App() {
-  const handleButtonClick = () => {
-    console.log('Button clicked!');
-  };
-
   return (
     <View style={styles.container}>
-      <View style={styles.tasksWrapper}>
-        <Text style={styles.Title}>Alarm</Text>
-        <Task text={'6:30 AM'} />
-        <Task text={'7:30 AM'} />
-        <Task text={'8:30 AM'} />
-        <Task text={'9:30 AM'} />
-        <View style={styles.items}></View>
+      <View style={styles.topSection}>
+        <Logo />
+        <Welcome />
       </View>
-      <TouchableOpacity style={styles.addButton} onPress={handleButtonClick}>
-        <Text style={styles.ButtonText}>+</Text>
-      </TouchableOpacity>
+      <View style={styles.bottomSection}>
+        <Input />
+        <SignUp/>
+      </View>
       <StatusBar style="auto" />
     </View>
   );
@@ -28,40 +24,16 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
-    justifyContent: 'space-between',
+    backgroundColor: '#176B87',
   },
-  tasksWrapper: {
-    paddingTop: 80,
-    paddingHorizontal: 20,
-  },
-  Title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    color: 'white',
-  },
-  items: {
+  topSection: {
     flex: 1,
-  },
-  addButton: {
-    backgroundColor: '#F5C997',
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    justifyContent: 'center',
-    position: 'absolute',
-    bottom: 20,
-    left: '50%',
-    marginLeft: -25,
   },
-  
-  ButtonText: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: 'white',
-    textAlign: 'center',
-    lineHeight: 50,  
-  }
+  bottomSection: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
